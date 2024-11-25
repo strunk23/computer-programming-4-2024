@@ -1,5 +1,8 @@
 name: "Prepare package"
-on: [push]
+on: 
+  push:
+    tags:
+      "v*.*.*"
 jobs:
   buildPackage:
     runs-on: ubuntu-latest
@@ -17,7 +20,7 @@ jobs:
         run: mvn test -DskipTests package
       - run: ls target/
       - run: mv target/*.jar app.jar
-      - uses: ncipollo/release action@v4
+      - uses: ncipollo/release-action@v1
         with:
           artifacts: "target/*.jar"
           body: "My release of version: ${{github.ref}}"
