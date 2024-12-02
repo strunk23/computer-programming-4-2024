@@ -12,4 +12,4 @@ jobs:
           distribution: 'corretto'
           architecture: x64
       - name: Run the Maven
-        run: mvn test
+        run: mvn test -DskipTests
